@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "szamito-osszeallito": {
+      "hosting": {
+        "szamito-osszerako": [
+          "szamito-osszeallito"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "szamito-osszeallito"
+  }
+}

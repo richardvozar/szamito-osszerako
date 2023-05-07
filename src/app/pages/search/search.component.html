@@ -1,0 +1,120 @@
+<!-- Searching CPUs -->
+<div>
+    <mat-form-field class="example-form-field">
+        <mat-label>Kezdj el írni egy CPU nevet</mat-label>
+        <input matInput type="text" [(ngModel)]="search_cpu_input_value">
+        <button *ngIf="search_cpu_input_value" matSuffix mat-icon-button aria-label="Clear" (click)="search_cpu_input_value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button mat-stroked-button color="primary" (click)="search_cpu_by_name()">CPU keresése név alapján</button>
+
+</div>
+
+<div *ngIf="search_cpu_by_name_boolean">
+    Találatok:
+    <div *ngFor="let elem of cpu_list2">
+        {{elem.product_family}} {{elem.product_name}}
+    </div>
+</div>
+
+
+<!-- Searching Cases -->
+<div>
+    <mat-form-field class="example-form-field">
+        <mat-label>Kezdj el írni egy Számítógépház nevet</mat-label>
+        <input matInput type="text" [(ngModel)]="search_case_input_value">
+        <button *ngIf="search_case_input_value" matSuffix mat-icon-button aria-label="Clear" (click)="search_case_input_value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button mat-stroked-button color="primary" (click)="search_case_by_name()">Számítógépház keresése név alapján</button>
+
+</div>
+
+<div *ngIf="search_case_by_name_boolean">
+    Találatok:
+    <div *ngFor="let elem of case_list">
+        {{elem.name}} {{elem.price_huf}}
+    </div>
+</div>
+
+
+
+<!-- LISTING ALL THE CPUs -->
+
+<button mat-stroked-button color="primary" (click)="list_all_cpu()">Minden CPU listázása</button>
+
+<div *ngIf="list_all_cpu_boolean">
+
+    <table mat-table [dataSource]="cpu_list" class="mat-elevation-z8">
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef=> No. </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.ID}} </td>
+        </ng-container>
+
+        <!-- product_name Column -->
+        <ng-container matColumnDef="product_name">
+            <th mat-header-cell *matHeaderCellDef> product_name </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.product_name}} </td>
+        </ng-container>
+
+        <!-- product_family Column -->
+        <ng-container matColumnDef="product_family">
+            <th mat-header-cell *matHeaderCellDef> product_family </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.product_family}} </td>
+        </ng-container>
+
+        <!-- price_huf Column -->
+        <ng-container matColumnDef="price_huf">
+            <th mat-header-cell *matHeaderCellDef> price_huf </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.price_huf}} </td>
+        </ng-container>
+
+        <!-- clock_base Column -->
+        <ng-container matColumnDef="clock_base">
+            <th mat-header-cell *matHeaderCellDef> clock_base </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.clock_base}} </td>
+        </ng-container>
+
+        <!-- clock_boost Column -->
+        <ng-container matColumnDef="clock_boost">
+            <th mat-header-cell *matHeaderCellDef> clock_boost </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.clock_boost}} </td>
+        </ng-container>
+
+        <!-- cpu_cores Column -->
+        <ng-container matColumnDef="cpu_cores">
+            <th mat-header-cell *matHeaderCellDef> cpu_cores </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.cpu_cores}} </td>
+        </ng-container>
+
+        <!-- cpu_threads Column -->
+        <ng-container matColumnDef="cpu_threads">
+            <th mat-header-cell *matHeaderCellDef> cpu_threads </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.cpu_threads}} </td>
+        </ng-container>
+
+        <!-- cpu_socket Column -->
+        <ng-container matColumnDef="cpu_socket">
+            <th mat-header-cell *matHeaderCellDef> cpu_socket </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.cpu_socket}} </td>
+        </ng-container>
+
+        <!-- tdp Column -->
+        <ng-container matColumnDef="tdp">
+            <th mat-header-cell *matHeaderCellDef> tdp </th>
+            <td mat-cell *matCellDef="let elem"> {{elem.tdp}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+</div>

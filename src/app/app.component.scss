@@ -1,0 +1,40 @@
+#navbar {
+    display: flex;
+    flex-direction: column;
+  
+    @media only screen and (min-width: 768px) {
+        flex-direction: row;
+    }
+  
+    button {
+        width: 100%;
+        margin: 5px;
+  
+        @media only screen and (min-width: 768px) {
+            width: auto;
+            margin: 0 10px;
+        }
+    }
+}
+  
+@media only screen and (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+  
+        button {
+            width: 100%;
+        }
+    }
+    #nav_logo {
+        padding-right: 1%;
+        text-align: center;
+    }
+}
+
+#nav_logo {
+    padding-right: 30%;
+}
+
+.between_nav_content {
+    height: 5%;
+}
